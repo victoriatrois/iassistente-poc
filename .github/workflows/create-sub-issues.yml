@@ -1,0 +1,20 @@
+name: Create Sub-Issues from Implementation Tasks
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-sub-issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create sub-issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          chmod +x create-sub-issues.sh
+          ./create-sub-issues.sh ${{ github.repository }}
