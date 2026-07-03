@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "branch": "node scripts/create-branch.js",
+    "commit": "cz commit",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "lint:eslint:check": "next lint --dir . 2>/dev/null || eslint .",
@@ -50,5 +52,10 @@
     "react-dom": "^18.3.1",
     "swr": "^2.2.5",
     "uuid": "^11.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
