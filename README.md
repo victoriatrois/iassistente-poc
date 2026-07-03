@@ -101,11 +101,11 @@ For detailed information, see:
 
 | Topic | File |
 |-------|------|
-| Full Architecture | [speech-to-text-poc.md](speech-to-text-poc.md) |
-| User Stories & Roadmap | [user-stories.md](user-stories.md) |
-| Task Breakdown (25 tasks) | [implementation-tasks.md](implementation-tasks.md) |
-| Database Schema & Commands | [postgres-commands.md](postgres-commands.md) |
-| Setup Reference | [project-setup-steps-followed.md](project-setup-steps-followed.md) |
+| Full Architecture | [speech-to-text-poc.md](docs/speech-to-text-poc.md) |
+| User Stories & Roadmap | [user-stories.md](docs/user-stories.md) |
+| Task Breakdown (25 tasks) | [implementation-tasks.md](docs/implementation-tasks.md) |
+| Database Schema & Commands | [postgres-commands.md](docs/postgres-commands.md) |
+| Setup Reference | [project-setup-steps-followed.md](docs/project-setup-steps-followed.md) |
 
 ---
 
@@ -114,6 +114,7 @@ For detailed information, see:
 ### Docker (Backend + Database)
 
 ```bash
+cd infrastructure
 docker-compose up              # Start all services
 docker-compose down            # Stop all services
 docker-compose logs -f         # View live logs
@@ -133,9 +134,9 @@ cd frontend && npm start       # Frontend app
 
 | Issue | Solution |
 |-------|----------|
-| Port 5432/3000 in use | `lsof -i :5432` then `kill -9 <PID>` or change `docker-compose.yml` |
-| Database won't start | `docker-compose logs postgres` to see errors |
-| Backend error | `docker-compose down -v && docker-compose up --build` |
+| Port 5432/3000 in use | `lsof -i :5432` then `kill -9 <PID>` or change `infrastructure/docker-compose.yml` |
+| Database won't start | `cd infrastructure && docker-compose logs postgres` to see errors |
+| Backend error | `cd infrastructure && docker-compose down -v && docker-compose up --build` |
 | Frontend fails | `npm start -- --reset-cache && npm install` |
 
 ---
@@ -144,17 +145,16 @@ cd frontend && npm start       # Frontend app
 
 ```
 iassistente-poc/
-├── backend/              # Next.js API + database services
-├── frontend/             # React Native mobile app
-├── docker-compose.yml    # Orchestrates PostgreSQL + Backend
-├── init.sql              # Auto-creates database schema
-├── README.md             # This file
-└── docs/
-    ├── speech-to-text-poc.md
-    ├── user-stories.md
-    ├── implementation-tasks.md
-    ├── postgres-commands.md
-    └── project-setup-steps-followed.md
+├── backend/               # Next.js API + database services
+├── frontend/              # React Native mobile app
+├── docs/                  # Documentation files
+├── scripts/               # Automation scripts
+├── infrastructure/        # Docker & database setup
+│   ├── docker-compose.yml # Orchestrates PostgreSQL + Backend
+│   └── init.sql           # Auto-creates database schema
+├── package.json           # Root: shared dev tools
+├── README.md              # This file
+└── ...
 ```
 
 ---
