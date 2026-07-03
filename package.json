@@ -8,6 +8,7 @@
     "commit": "cz",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
+    "lint:eslint:check": "eslint .",
     "lint:secretlint:check": "npx secretlint \"**/*\"",
     "prepare": "husky"
   },
