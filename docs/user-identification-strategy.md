@@ -38,7 +38,9 @@ const token = session.jwt;
 ```
 
 ### Authenticated backend request
+
 **Request:**
+
 ```http
 GET /api/notes HTTP/1.1
 Host: api.iassistente.local
@@ -46,6 +48,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
 ```
 
 **Response:**
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json

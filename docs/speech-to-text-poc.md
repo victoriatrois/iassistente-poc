@@ -68,6 +68,7 @@ Microphone → Speech-to-Text Library → Text → Node API → Database
 ### UI Layer
 
 Responsibilities:
+
 - Display buttons
 - Display notes
 - Display save status
@@ -76,6 +77,7 @@ Responsibilities:
 ### Speech Recognition Layer
 
 Responsibilities:
+
 - Request microphone permission
 - Start listening
 - Receive spoken note
@@ -84,6 +86,7 @@ Responsibilities:
 ### API Communication Layer
 
 Responsibilities:
+
 - Send written note to backend
 - Receive success/error response
 - Retrieve the current user's notes
@@ -91,7 +94,7 @@ Responsibilities:
 Example payload:
 
 {
-  "content": "Today I need to buy milk"
+"content": "Today I need to buy milk"
 }
 
 ## 4. Backend responsibilities
@@ -99,21 +102,25 @@ Example payload:
 ### POST /notes
 
 Validates:
+
 - User exists
 - Content exists
 - Content is not empty
 
 Then:
+
 - Associates the note with the current user
 - Stores the note
 
 ### GET /notes
 
 Validates:
+
 - User exists
 - User is authorized
 
 Then:
+
 - Retrieves only notes belonging to the current user
 - Returns them as JSON
 
@@ -143,13 +150,13 @@ Business Rule: A Note must belong to exactly one User.
 
 ## 6. Technology Stack (Decided)
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React Native + TypeScript |
-| Backend | Next.js + TypeScript + Node.js |
-| Database | PostgreSQL |
-| Speech Recognition | react-native-voice |
-| HTTP Client | axios |
+| Layer              | Technology                     |
+| ------------------ | ------------------------------ |
+| Frontend           | React Native + TypeScript      |
+| Backend            | Next.js + TypeScript + Node.js |
+| Database           | PostgreSQL                     |
+| Speech Recognition | react-native-voice             |
+| HTTP Client        | axios                          |
 
 ## 7. Non-Functional Requirements
 
@@ -169,6 +176,7 @@ I want to dictate a note using my voice,
 so that I can quickly capture information without typing.
 
 Acceptance Criteria:
+
 - User can start recording.
 - Application requests microphone permission if necessary.
 - Speech is converted into text.
@@ -184,6 +192,7 @@ I want to see my saved notes,
 so that I can review information I captured previously.
 
 Acceptance Criteria:
+
 - User can access the notes list.
 - Application retrieves notes from the backend.
 - Only notes belonging to the current user are returned.
@@ -197,6 +206,7 @@ I want to open a specific note,
 so that I can read its complete content.
 
 Acceptance Criteria:
+
 - User can select a note from the list.
 - Application retrieves the selected note.
 - The selected note belongs to the current user.
@@ -211,6 +221,7 @@ I want my notes to be associated with me,
 so that they remain separate from notes created by other users.
 
 Acceptance Criteria:
+
 - Every note is linked to exactly one user.
 - Users can only access their own notes.
 - Backend identifies the current user before retrieving notes.
@@ -224,6 +235,7 @@ I want to be informed when microphone access is required,
 so that I understand why recording cannot start.
 
 Acceptance Criteria:
+
 - Application requests microphone permission.
 - If permission is denied, an explanatory message is shown.
 - Recording cannot start without permission.
@@ -235,6 +247,7 @@ I want to receive feedback when a save operation fails,
 so that I know my note was not stored successfully.
 
 Acceptance Criteria:
+
 - Application detects communication failures.
 - Error message is displayed.
 - User remains on the current screen.
