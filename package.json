@@ -6,9 +6,10 @@
   "scripts": {
     "branch": "node scripts/create-branch.js",
     "commit": "cz",
-    "lint:prettier:check": "prettier --check .",
-    "lint:prettier:fix": "prettier --write .",
-    "lint:eslint:check": "eslint .",
+    "lint:prettier:check": "cd backend && prettier --check . && cd ../frontend && prettier --check .",
+    "lint:prettier:fix": "cd backend && prettier --write . && cd ../frontend && prettier --write .",
+    "lint:eslint:check": "cd backend && eslint . && cd ../frontend && eslint .",
+    "lint:eslint:fix": "cd backend && eslint . --fix && cd ../frontend && eslint . --fix",
     "lint:secretlint:check": "npx secretlint \"**/*\"",
     "prepare": "husky"
   },
@@ -22,8 +23,12 @@
     "commitizen": "^4.3.2",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.9",
     "husky": "^9.1.4",
+    "next": "^16.2.9",
     "prettier": "^3.3.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "secretlint": "^11.2.5"
   },
   "config": {
