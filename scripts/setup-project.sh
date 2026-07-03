@@ -2,7 +2,7 @@
 
 # Setup Linting Configuration and Git Hooks
 # This script replicates the linting setup from the reference repository
-# Usage: ./setup-linting.sh
+# Usage: ./setup-project.sh
 
 set -e
 

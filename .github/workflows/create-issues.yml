@@ -16,5 +16,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          chmod +x create-issues.sh
-          ./create-issues.sh ${{ github.repository }}
+          chmod +x scripts/create-issues.sh
+          ./scripts/create-issues.sh ${{ github.repository }}

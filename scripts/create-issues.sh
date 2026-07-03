@@ -81,7 +81,7 @@ so that they remain separate from notes created by other users.
 
 This is the **critical blocker** for all other backend development. Must be completed first.
 
-_Source: [user-stories.md](user-stories.md), [speech-to-text-poc.md](speech-to-text-poc.md), [step-8-suggested-implementation-order.md](step-8-suggested-implementation-order.md)_" \
+_Source: [user-stories.md](docs/user-stories.md), [speech-to-text-poc.md](docs/speech-to-text-poc.md), [step-8-suggested-implementation-order.md](docs/step-8-suggested-implementation-order.md)_" \
   "user-story,backend,blocker,phase-1"
 
 # ---------------------------------------------------------------------------

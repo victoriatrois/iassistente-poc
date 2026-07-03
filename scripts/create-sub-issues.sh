@@ -11,7 +11,7 @@ set -e
 REPO="${1:-victoriatrois/iassistente-poc}"
 
 echo "Creating sub-issues in $REPO..."
-echo "Reference: implementation-tasks.md"
+echo "Reference: docs/implementation-tasks.md"
 echo ""
 
 # ---------------------------------------------------------------------------
@@ -94,7 +94,7 @@ export async function getUserById(id: string): Promise<{ id: string; name: strin
 ## Related
 
 - **Parent Issue:** #$US04_ID
-- Source: [implementation-tasks.md](implementation-tasks.md)
+- Source: [implementation-tasks.md](docs/implementation-tasks.md)
 
 _Sub-task of [US04] Identify the Current User_" \
   "backend,phase-1"
