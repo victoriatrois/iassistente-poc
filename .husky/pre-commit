@@ -1,0 +1,4 @@
+files=$(git diff --cached --name-only --diff-filter=ACM)
+if [ -n "$files" ]; then
+  npx secretlint $files || exit 1
+fi
