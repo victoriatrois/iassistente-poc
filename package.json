@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "branch": "node scripts/create-branch.js",
-    "commit": "cz commit",
+    "commit": "cz",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "lint:secretlint:check": "npx secretlint \"**/*\"",
@@ -18,7 +18,7 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@secretlint/secretlint-rule-aws": "^11.2.5",
     "@secretlint/secretlint-rule-preset-recommend": "^11.2.5",
-    "commitizen": "^4.3.0",
+    "commitizen": "^4.3.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.4",
     "prettier": "^3.3.3",
