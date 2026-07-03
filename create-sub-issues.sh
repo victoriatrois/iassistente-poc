@@ -15,6 +15,32 @@ echo "Reference: implementation-tasks.md"
 echo ""
 
 # ---------------------------------------------------------------------------
+# Fetch parent issue numbers
+# ---------------------------------------------------------------------------
+echo "🔍 Fetching parent issue numbers..."
+
+US04_ID=$(gh issue list --repo "$REPO" --search "[US04] Identify the Current User" --state open --json number --jq '.[0].number' 2>/dev/null || echo "")
+US01_ID=$(gh issue list --repo "$REPO" --search "[US01] Create a Note Using Voice" --state open --json number --jq '.[0].number' 2>/dev/null || echo "")
+US02_ID=$(gh issue list --repo "$REPO" --search "[US02] View My Saved Notes" --state open --json number --jq '.[0].number' 2>/dev/null || echo "")
+US03_ID=$(gh issue list --repo "$REPO" --search "[US03] View a Note" --state open --json number --jq '.[0].number' 2>/dev/null || echo "")
+US05_ID=$(gh issue list --repo "$REPO" --search "[US05] Handle Microphone Permission" --state open --json number --jq '.[0].number' 2>/dev/null || echo "")
+US06_ID=$(gh issue list --repo "$REPO" --search "[US06] Handle Communication Failures" --state open --json number --jq '.[0].number' 2>/dev/null || echo "")
+
+if [ -z "$US04_ID" ]; then
+  echo "❌ Could not find parent issues. Make sure create-issues.sh has been run first."
+  exit 1
+fi
+
+echo "✅ Found parent issues:"
+echo "   US04: #$US04_ID"
+echo "   US01: #$US01_ID"
+echo "   US02: #$US02_ID"
+echo "   US03: #$US03_ID"
+echo "   US05: #$US05_ID"
+echo "   US06: #$US06_ID"
+echo ""
+
+# ---------------------------------------------------------------------------
 # Helper
 # ---------------------------------------------------------------------------
 create_issue() {
@@ -67,9 +93,10 @@ export async function getUserById(id: string): Promise<{ id: string; name: strin
 
 ## Related
 
-- Parent: [US04] Identify the Current User
+- **Parent Issue:** #$US04_ID
+- Source: [implementation-tasks.md](implementation-tasks.md)
 
-_Source: [implementation-tasks.md](implementation-tasks.md)_" \
+_Sub-task of [US04] Identify the Current User_" \
   "backend,phase-1"
 
 create_issue \
@@ -1128,3 +1155,13 @@ echo "  Total:             25 sub-tasks"
 echo ""
 echo "Total estimated duration: 25-30 days of work"
 echo "With 2 developers in parallel: ~15 days"
+echo ""
+echo "📝 Next steps:"
+echo "  1. Go to GitHub Issues: https://github.com/$REPO/issues"
+echo "  2. Sub-issues are labeled by phase"
+echo "  3. Follow the critical path in implementation-tasks.md"
+echo ""
+echo "💡 Tip: To link sub-issues to parent issues in GitHub UI:"
+echo "  - Open a sub-issue"
+echo "  - Click 'Link an issue' on the right panel"
+echo "  - Select the parent user story"
