@@ -27,6 +27,7 @@ Phase 5: Error Handling & Polish
 ## Execution Priority
 
 **Critical Path (Must Complete):** US04 → US01 → US02 → US05 → US06
+
 - US04 is a blocker for backend development
 - US01 & US02 must be complete before frontend integration
 - US05 & US03 UI features depend on backend being ready
@@ -37,7 +38,7 @@ Phase 5: Error Handling & Polish
 ## ✅ Project Setup (Completed)
 
 - [x] Frontend React Native project with TypeScript
-- [x] Backend Next.js project with TypeScript  
+- [x] Backend Next.js project with TypeScript
 - [x] PostgreSQL database & tables created
 - [x] Database schema: `user` and `note` tables with UUID PKs
 - [x] Dependencies installed (react-native-voice, axios, pg)

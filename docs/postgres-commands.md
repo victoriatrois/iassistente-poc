@@ -3,6 +3,7 @@
 ## DDL (Data Definition Language)
 
 ### Create User Table
+
 ```sql
 CREATE TABLE "user" (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -12,6 +13,7 @@ CREATE TABLE "user" (
 ```
 
 ### Create Note Table
+
 ```sql
 CREATE TABLE note (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -23,6 +25,7 @@ CREATE TABLE note (
 ```
 
 ### Create Index on Notes
+
 ```sql
 CREATE INDEX idx_note_user_id ON note(user_id);
 ```
@@ -37,6 +40,7 @@ CREATE INDEX idx_note_user_id ON note(user_id);
 ## DCL (Data Control Language)
 
 ### Grant Permissions to User
+
 ```sql
 GRANT ALL PRIVILEGES ON SCHEMA public TO notes_user;
 GRANT ALL PRIVILEGES ON DATABASE notes_db TO notes_user;

@@ -9,6 +9,7 @@ This document breaks down each user story into concrete, independently testable 
 ## Phase 1: User Identification (US04)
 
 ### Task 04.1: Create User Service Module
+
 - **User Story:** US04
 - **Duration:** ~1 day
 - **What:** TypeScript service with database queries
@@ -27,6 +28,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 04.2: Create User Identification Middleware
+
 - **User Story:** US04
 - **Duration:** ~0.5 days
 - **What:** Express middleware to extract user from request
@@ -47,6 +49,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 04.3: Create POST /api/users Endpoint
+
 - **User Story:** US04
 - **Duration:** ~1 day
 - **What:** Endpoint to create or get user
@@ -80,6 +83,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 04.4: Document User Identification Strategy
+
 - **User Story:** US04
 - **Duration:** ~0.5 days
 - **What:** Write decision document
@@ -100,10 +104,11 @@ This document breaks down each user story into concrete, independently testable 
 ## Phase 2: Core Backend Features
 
 ### Task 01B.1: Create Note Service Module
+
 - **User Story:** US01
 - **Duration:** ~1 day
 - **What:** `backend/lib/noteService.ts` - database operations for notes
-- **Deliverable:** 
+- **Deliverable:**
   - `createNote(userId: string, content: string)` → `{ id, user_id, content, created_at }`
   - `validateNoteContent(content: string)` → `boolean`
 - **Functions:**
@@ -111,7 +116,7 @@ This document breaks down each user story into concrete, independently testable 
   export async function createNote(userId: string, content: string) {
     // Insert into notes table, return new note
   }
-  
+
   export function validateNoteContent(content: string): boolean {
     // Ensure content exists and is not empty
     return content && content.trim().length > 0;
@@ -127,6 +132,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 01B.2: Create POST /api/notes Endpoint
+
 - **User Story:** US01
 - **Duration:** ~1 day
 - **What:** API endpoint to save a note
@@ -164,6 +170,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 01B.3: Add API Error Handling & Logging
+
 - **User Story:** US01
 - **Duration:** ~1 day
 - **What:** Centralized error handler for POST /api/notes
@@ -185,6 +192,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 02B.1: Create GET /api/notes Endpoint
+
 - **User Story:** US02
 - **Duration:** ~1 day
 - **What:** Retrieve only current user's notes
@@ -217,6 +225,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 02B.2: Add Pagination to GET /api/notes
+
 - **User Story:** US02
 - **Duration:** ~1 day
 - **What:** Support `?limit=10&offset=0` for large datasets
@@ -248,6 +257,7 @@ This document breaks down each user story into concrete, independently testable 
 ## Phase 3: Frontend Foundation
 
 ### Task 05F.1: Setup Permissions Library
+
 - **User Story:** US05
 - **Duration:** ~0.5 days
 - **What:** Install & configure `react-native-permissions`
@@ -265,6 +275,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 05F.2: Create Permission Request Hook
+
 - **User Story:** US05
 - **Duration:** ~1 day
 - **What:** React hook to handle microphone permission
@@ -272,13 +283,13 @@ This document breaks down each user story into concrete, independently testable 
 - **Hook:**
   ```typescript
   export function useAudioPermission() {
-    const [status, setStatus] = useState('unknown');
-    const isGranted = status === 'granted';
-    
+    const [status, setStatus] = useState("unknown");
+    const isGranted = status === "granted";
+
     const requestPermission = async () => {
       // Request and return result
     };
-    
+
     return { status, isGranted, requestPermission };
   }
   ```
@@ -292,6 +303,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 05F.3: Create Permission UI Component
+
 - **User Story:** US05
 - **Duration:** ~1 day
 - **What:** Show permission status & request button
@@ -311,10 +323,11 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 05F.4: Setup Basic App Navigation
+
 - **User Story:** US05
 - **Duration:** ~1 day
 - **What:** Create app shell with screens
-- **Deliverable:** 
+- **Deliverable:**
   - `frontend/navigation/RootNavigator.tsx`
   - `frontend/screens/RecordingScreen.tsx` (stub)
   - `frontend/screens/NotesListScreen.tsx` (stub)
@@ -335,6 +348,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 05F.5: Setup Axios API Client
+
 - **User Story:** US05
 - **Duration:** ~0.5 days
 - **What:** Create API client module
@@ -342,11 +356,11 @@ This document breaks down each user story into concrete, independently testable 
 - **Functions:**
   ```typescript
   const API_BASE_URL = 'http://localhost:3000';
-  
+
   export const apiClient = axios.create({
     baseURL: API_BASE_URL,
   });
-  
+
   export async function createUser(name: string) { ... }
   export async function getNotes(userId: string) { ... }
   export async function createNote(userId: string, content: string) { ... }
@@ -360,16 +374,17 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 05F.6: Create Mock Data for Testing
+
 - **User Story:** US05
 - **Duration:** ~0.5 days
 - **What:** Mock data to test UI without backend
 - **Deliverable:** `frontend/lib/mockData.ts`
 - **Content:**
   ```typescript
-  export const mockUser = { id: '123', name: 'Victoria' };
+  export const mockUser = { id: "123", name: "Victoria" };
   export const mockNotes = [
-    { id: '1', content: 'Buy milk', created_at: '...' },
-    { id: '2', content: 'Call John', created_at: '...' }
+    { id: "1", content: "Buy milk", created_at: "..." },
+    { id: "2", content: "Call John", created_at: "..." },
   ];
   ```
 - **Acceptance Criteria:**
@@ -382,6 +397,7 @@ This document breaks down each user story into concrete, independently testable 
 ## Phase 4: Frontend Features
 
 ### Task 01F.1: Create Recording Screen Component
+
 - **User Story:** US01 (Frontend)
 - **Duration:** ~1 day
 - **What:** Basic screen with Start/Stop buttons
@@ -401,6 +417,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 01F.2: Integrate Speech-to-Text Library
+
 - **User Story:** US01 (Frontend)
 - **Duration:** ~1.5 days
 - **What:** Connect `react-native-voice` to buttons
@@ -421,6 +438,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 01F.3: Add Save Button & API Integration
+
 - **User Story:** US01 (Frontend)
 - **Duration:** ~1 day
 - **What:** Connect to POST /api/notes endpoint
@@ -440,6 +458,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 01F.4: Add Error Handling to Recording Screen
+
 - **User Story:** US01 (Frontend)
 - **Duration:** ~1 day
 - **What:** Handle permission denied, API errors, recording failures
@@ -457,6 +476,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 02F.1: Create Notes List Screen Component
+
 - **User Story:** US02 (Frontend)
 - **Duration:** ~1 day
 - **What:** Screen showing all user notes
@@ -476,6 +496,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 02F.2: Connect GET /api/notes Endpoint
+
 - **User Story:** US02 (Frontend)
 - **Duration:** ~1 day
 - **What:** Fetch notes on screen mount
@@ -496,6 +517,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 02F.3: Add Note Selection & Navigation
+
 - **User Story:** US02 (Frontend)
 - **Duration:** ~0.5 days
 - **What:** Tap note → navigate to detail screen
@@ -513,6 +535,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 03F.1: Create Note Detail Screen
+
 - **User Story:** US03 (Frontend)
 - **Duration:** ~1 day
 - **What:** Display full note content
@@ -532,6 +555,7 @@ This document breaks down each user story into concrete, independently testable 
 ## Phase 5: Error Handling & Polish
 
 ### Task 06.1: Add Try/Catch to All API Calls
+
 - **User Story:** US06
 - **Duration:** ~1 day
 - **What:** Wrap all API calls in error handlers
@@ -550,6 +574,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 06.2: Create Error Message Component
+
 - **User Story:** US06
 - **Duration:** ~1 day
 - **What:** Reusable component to display errors
@@ -568,6 +593,7 @@ This document breaks down each user story into concrete, independently testable 
 ---
 
 ### Task 06.3: Add Retry Logic
+
 - **User Story:** US06
 - **Duration:** ~1 day
 - **What:** Automatically retry failed API calls
@@ -588,6 +614,7 @@ This document breaks down each user story into concrete, independently testable 
 **Total Estimated Duration:** ~25-30 days of work
 
 **Critical Path Order:**
+
 1. Phase 1 (4 tasks) - Days 1-4
 2. Phase 2 (5 tasks) - Days 5-10
 3. Phase 3 (6 tasks) - Days 11-16 (parallel with Phase 2)

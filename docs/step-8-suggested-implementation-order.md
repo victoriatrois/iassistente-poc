@@ -1,6 +1,6 @@
 # Implementation Execution Guide
 
-This document provides a **tactical execution guide** for implementing the phases defined in [user-stories.md](user-stories.md). 
+This document provides a **tactical execution guide** for implementing the phases defined in [user-stories.md](user-stories.md).
 
 For the complete development roadmap and user stories, see [user-stories.md](user-stories.md).
 For complete user story specifications, see [speech-to-text-poc.md](speech-to-text-poc.md).
@@ -10,9 +10,11 @@ For complete user story specifications, see [speech-to-text-poc.md](speech-to-te
 ## Phase 1: User Identification (US04)
 
 ### Goal
+
 Resolve the blocking dependency so all other features can proceed.
 
 ### Backend Tasks
+
 - [ ] Create user service module
 - [ ] Setup user identification middleware
 - [ ] Create POST /api/users endpoint (create/get user)
@@ -26,9 +28,11 @@ Resolve the blocking dependency so all other features can proceed.
 ## Phase 2: Core Backend Features (US01 & US02)
 
 ### Goal
+
 Create the API endpoints that the frontend will consume.
 
 ### US01: Create Note (POST /api/notes)
+
 - [ ] Create endpoint
 - [ ] Validate: user exists, content exists, content not empty
 - [ ] Associate note with user
@@ -36,6 +40,7 @@ Create the API endpoints that the frontend will consume.
 - [ ] Return success response with note ID
 
 ### US02: View Notes (GET /api/notes)
+
 - [ ] Create endpoint
 - [ ] Identify current user
 - [ ] Retrieve only user's notes from database
@@ -48,9 +53,11 @@ Create the API endpoints that the frontend will consume.
 ## Phase 3: Frontend Foundation (US05)
 
 ### Goal
+
 Prepare frontend to integrate with backend.
 
 ### Tasks
+
 - [ ] Setup React Native Permissions library
 - [ ] Request microphone permission on app start
 - [ ] Handle permission granted scenario
@@ -66,9 +73,11 @@ Prepare frontend to integrate with backend.
 ## Phase 4: Frontend Features (US01, US02, US03)
 
 ### Goal
+
 Implement recording and note viewing UI.
 
 ### US01 Frontend: Create Note UI
+
 - [ ] Create recording screen component
 - [ ] Add Start/Stop Recording buttons
 - [ ] Integrate speech-to-text library (react-native-voice)
@@ -78,12 +87,14 @@ Implement recording and note viewing UI.
 - [ ] Display save confirmation
 
 ### US02 Frontend: View Notes List
+
 - [ ] Create notes list screen
 - [ ] Connect to GET /api/notes
 - [ ] Display notes with dates
 - [ ] Add navigation to note detail screen
 
 ### US03 Frontend: View Single Note
+
 - [ ] Create note detail screen
 - [ ] Display complete note content
 - [ ] Add back navigation
@@ -96,9 +107,11 @@ Implement recording and note viewing UI.
 ## Phase 5: Error Handling & Polish (US06)
 
 ### Goal
+
 Add resilience and improve user experience.
 
 ### Tasks
+
 - [ ] Add try/catch to all API calls
 - [ ] Display user-friendly error messages
 - [ ] Handle network timeout scenarios
