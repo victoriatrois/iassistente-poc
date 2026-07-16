@@ -1,20 +1,23 @@
 # Backend Dockerfile
-FROM node:18-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files
+# Copy root package files (monorepo)
 COPY package.json package-lock.json ./
 
-# Install dependencies
+# Copy backend package.json
+COPY backend/package.json backend/
+
+# Install dependencies for all workspaces
 RUN npm ci
 
 # Copy source code
 COPY . .
 
 # Build the Next.js app
-RUN npm run build
+RUN npm --workspace=backend run build
 
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "--workspace=backend", "run", "dev"]
