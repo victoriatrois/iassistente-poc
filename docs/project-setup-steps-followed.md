@@ -1,6 +1,12 @@
 # Initial setup
 
+This file records the original bootstrapping steps that were followed when the repository was first created.
+
+For the current repository layout and active paths, prefer the root `README.md` and `docs/run-instructions.md`.
+
 ## Frontend setup
+
+These were the original creation steps for the frontend workspace.
 
 1. cd ..
 2. mkdir frontend
@@ -11,6 +17,8 @@
 
 ## Backend setup
 
+These were the original creation steps for the backend workspace.
+
 1. mkdir backend && cd backend
 2. npx create-next-app@latest . --typescript --eslint
 3. npm install pg dotenv
@@ -20,7 +28,9 @@
 
 ## Database setup
 
-1. run the backend locally: `npm run build`
+These database steps reflect the initial manual setup that predates the current Docker-based local workflow.
+
+1. build the backend workspace: `npm run build`
 2. install `brew install postgresql@15`
 3. start the service: `brew services start postgresql@15`
 4. Create the database: `createdb notes_db`

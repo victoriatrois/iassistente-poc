@@ -20,15 +20,17 @@ A proof-of-concept mobile app for capturing and managing voice-to-text notes.
 ### Prerequisites
 
 - **Docker & Docker Compose**
-- **Node.js 18+** & npm
+- **Node.js 22.11.0+** & npm
 - **Git**
+- **Xcode** for iOS development on macOS
+- **Android Studio** for Android development
 
-### Setup & Run
+### Setup and Run
 
 **⚠️ Prerequisites Check:**
 
 - Docker Desktop is running (`docker --version` in terminal)
-- Node.js installed (`node --version` returns v18 or higher)
+- Node.js installed (`node --version` returns v22.11.0 or higher)
 - Git installed (`git --version` works)
 
 **1. Create local environment file:**
@@ -39,10 +41,13 @@ Navigate to the project root folder and run:
 cp .env.example .env.local
 ```
 
-Open `.env.local` in your editor. The default values are fine for local development:
+Open `.env.local` in your editor and set local values. For the Docker workflow in this repository, use:
 
 ```
-POSTGRES_PASSWORD=notes_password
+POSTGRES_DB=<your database name>
+POSTGRES_USER=<your database user>
+POSTGRES_PASSWORD=<your database password>
+DATABASE_URL=<postgresql connection string>
 ```
 
 **2. Start backend + database:**
@@ -50,30 +55,21 @@ POSTGRES_PASSWORD=notes_password
 In your terminal, from the project root:
 
 ```bash
-docker-compose up
+npm run services:up
 ```
 
-**Wait for this message to appear** (takes 10-20 seconds):
+**Wait for the services to report healthy startup**
 
-```
-iassistente-backend | ready - started server on 0.0.0.0:3000
-```
-
-✅ You'll know it's ready when you see that message.
+✅ You'll know it's ready when the backend and database containers stay up and `npm run services:ps` shows them running.
 
 **3. Start frontend (open a NEW terminal tab/window):**
 
 ```bash
 cd frontend
-npm install
 npm start
 ```
 
-**Wait for:**
-
-```
-To open your app in Expo Go, scan this QR code
-```
+**Wait for Metro to start successfully.**
 
 **4. Choose your platform:**
 
@@ -89,18 +85,20 @@ npm run ios
 npm run android
 ```
 
-**Expo Go app** (iOS/Android - easiest):
+If this is your first iOS run, or native dependencies changed, run:
 
-- Download "Expo Go" app from App Store or Play Store
-- Scan the QR code shown in step 3
-- App opens in Expo Go
+```bash
+cd frontend
+bundle install
+bundle exec pod install
+```
 
 ---
 
 **✅ Success = All 3 running:**
 
 - Backend terminal: API logs appearing
-- Frontend terminal: `Local: http://...` showing
+- Frontend terminal: Metro bundler running
 - Device/Simulator: App displaying
 
 ---
@@ -124,18 +122,17 @@ For detailed information, see:
 ### Docker (Backend + Database)
 
 ```bash
-cd infrastructure
-docker-compose up              # Start all services
-docker-compose down            # Stop all services
-docker-compose logs -f         # View live logs
-docker-compose exec postgres psql -U notes_user -d notes_db  # Connect to DB
+npm run services:up      # Start all services
+npm run services:down    # Stop all services
+npm run services:logs    # View live logs
+npm run services:ps      # List running services
 ```
 
 ### Development
 
 ```bash
-cd backend && npm run dev      # Backend server
-cd frontend && npm start       # Frontend app
+npm run dev              # Backend server from root workspace
+cd frontend && npm start # Frontend Metro bundler
 ```
 
 ---
@@ -144,9 +141,9 @@ cd frontend && npm start       # Frontend app
 
 | Issue                 | Solution                                                                           |
 | --------------------- | ---------------------------------------------------------------------------------- |
-| Port 5432/3000 in use | `lsof -i :5432` then `kill -9 <PID>` or change `infrastructure/docker-compose.yml` |
-| Database won't start  | `cd infrastructure && docker-compose logs postgres` to see errors                  |
-| Backend error         | `cd infrastructure && docker-compose down -v && docker-compose up --build`         |
+| Port 5432/3000 in use | `lsof -i :5432` or `lsof -i :3000`, then stop the conflicting process              |
+| Database won't start  | `npm run services:logs` to inspect the PostgreSQL container                        |
+| Backend error         | `npm run services:down` then `npm run services:up` to recreate local services      |
 | Frontend fails        | `npm start -- --reset-cache && npm install`                                        |
 
 ---
@@ -159,7 +156,7 @@ iassistente-poc/
 ├── frontend/              # React Native mobile app
 ├── docs/                  # Documentation files
 ├── scripts/               # Automation scripts
-├── infrastructure/        # Docker & database setup
+├── infra/                 # Docker & database setup
 │   ├── docker-compose.yml # Orchestrates PostgreSQL + Backend
 │   └── init.sql           # Auto-creates database schema
 ├── package.json           # Root: shared dev tools
@@ -174,18 +171,17 @@ iassistente-poc/
 1. **Start Docker**
 
    ```bash
-   docker-compose up
+   npm run services:up
    ```
 
 2. **Start Frontend** (in another terminal)
 
    ```bash
    cd frontend
-   npm install
    npm start
    ```
 
-3. **Pick a task** from [implementation-tasks.md](implementation-tasks.md) — start with Phase 1
+3. **Pick a task** from [implementation-tasks.md](docs/implementation-tasks.md) — start with Phase 1
 
 4. **Create a feature branch**
 
@@ -198,13 +194,13 @@ iassistente-poc/
    git commit -m "feat(backend): description"
    ```
 
-See [implementation-tasks.md](implementation-tasks.md) for full task details and dependencies.
+See [implementation-tasks.md](docs/implementation-tasks.md) for full task details and dependencies.
 
 ---
 
 ## 📖 Architecture
 
-See [speech-to-text-poc.md](speech-to-text-poc.md) for:
+See [speech-to-text-poc.md](docs/speech-to-text-poc.md) for:
 
 - User identification flow
 - Note creation & retrieval workflows
@@ -223,8 +219,8 @@ See [speech-to-text-poc.md](speech-to-text-poc.md) for:
 4. **Phase 4:** Feature Implementation
 5. **Phase 5:** Error Handling & Polish
 
-See [user-stories.md](user-stories.md) for detailed breakdown and critical path.
+See [user-stories.md](docs/user-stories.md) for detailed breakdown and critical path.
 
 ---
 
-**Last Updated:** June 27, 2026 | **Setup:** Docker only | **Status:** Phase 1 Ready
+**Last Updated:** July 17, 2026 | **Setup:** Workspace + Docker | **Status:** Phase 1 Ready
