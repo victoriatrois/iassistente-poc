@@ -25,8 +25,8 @@
     "lint": "npm run lint:prettier:check && npm run lint:eslint:check",
     "lint:prettier:check": "prettier --check \"backend/**/*.{ts,tsx,js,json,md}\" \"frontend/**/*.{ts,tsx,js,json,md}\"",
     "lint:prettier:fix": "prettier --write \"backend/**/*.{ts,tsx,js,json,md}\" \"frontend/**/*.{ts,tsx,js,json,md}\"",
-    "lint:eslint:check": "eslint \"backend/**/*.{ts,tsx,js}\" \"frontend/**/*.{ts,tsx,js}\"",
-    "lint:eslint:fix": "eslint \"backend/**/*.{ts,tsx,js}\" \"frontend/**/*.{ts,tsx,js}\" --fix",
+    "lint:eslint:check": "npm --workspace=backend run lint && npm --workspace=frontend run lint",
+    "lint:eslint:fix": "npm --workspace=backend run lint -- --fix && npm --workspace=frontend run lint -- --fix",
     "lint:secretlint:check": "secretlint \"**/*\"",
     "lint:backend": "npm --workspace=backend run lint",
     "lint:frontend": "npm --workspace=frontend run lint",
@@ -52,6 +52,7 @@
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.9",
     "husky": "^9.1.4",
+    "next": "16.2.9",
     "prettier": "^3.3.3",
     "secretlint": "^11.2.5",
     "typescript": "^5"

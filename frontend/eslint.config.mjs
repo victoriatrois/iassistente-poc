@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import reactPlugin from 'eslint-plugin-react';
 
 export default [
   {
@@ -23,9 +24,13 @@ export default [
         },
       },
     },
+    plugins: {
+      react: reactPlugin,
+    },
     rules: {
       // React Native and general rules
       'no-unused-vars': 'warn',
+      'react/jsx-uses-vars': 'warn',
     },
   },
 ];
