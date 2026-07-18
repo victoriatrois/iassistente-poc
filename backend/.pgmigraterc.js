@@ -1,3 +1,3 @@
 module.exports = {
-  migrationsTable: 'pgmigrations',
+  migrationsTable: "pgmigrations",
 };

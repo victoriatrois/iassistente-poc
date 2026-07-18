@@ -1,17 +1,17 @@
 (async () => {
-  const dotenv = await import('dotenv');
-  const { execSync } = await import('node:child_process');
-  const path = await import('node:path');
+  const dotenv = await import("dotenv");
+  const { execSync } = await import("node:child_process");
+  const path = await import("node:path");
 
-  dotenv.config({ path: '.env.local' });
+  dotenv.config({ path: ".env.local" });
 
   const command = process.argv[2];
-  const args = process.argv.slice(3).join(' ');
-  const backendRoot = path.join(__dirname, '..');
+  const args = process.argv.slice(3).join(" ");
+  const backendRoot = path.join(__dirname, "..");
 
   try {
     execSync(`node-pg-migrate ${command} --migrations-dir migrations ${args}`, {
-      stdio: 'inherit',
+      stdio: "inherit",
       cwd: backendRoot,
     });
   } catch (error) {

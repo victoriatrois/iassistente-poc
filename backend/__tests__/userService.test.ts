@@ -37,13 +37,13 @@ describe("userService", () => {
     createdSubs.push(sub);
 
     const first = await getOrCreateUserFromAuth0Claims({
-    sub,
-    name: "First Name",
+      sub,
+      name: "First Name",
     });
 
     const second = await getOrCreateUserFromAuth0Claims({
-    sub,
-    name: "Second Name",
+      sub,
+      name: "Second Name",
     });
 
     expect(second.id).toBe(first.id);
@@ -52,8 +52,8 @@ describe("userService", () => {
   it("throws when sub is missing", async () => {
     await expect(
       getOrCreateUserFromAuth0Claims({
-      sub: "",
-      name: "No Sub",
+        sub: "",
+        name: "No Sub",
       }),
     ).rejects.toThrow("Auth0 sub is required");
   });

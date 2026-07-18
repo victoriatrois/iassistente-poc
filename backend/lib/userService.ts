@@ -29,7 +29,9 @@ export async function getUserById(id: string): Promise<UserRecord | null> {
   return result.rows[0] ?? null;
 }
 
-export async function getUserByAuth0Sub(sub: string): Promise<UserRecord | null> {
+export async function getUserByAuth0Sub(
+  sub: string,
+): Promise<UserRecord | null> {
   const result = await query<UserRecord>(
     'SELECT id, name, auth0_sub, created_at FROM "user" WHERE auth0_sub = $1 LIMIT 1',
     [sub],
@@ -38,7 +40,9 @@ export async function getUserByAuth0Sub(sub: string): Promise<UserRecord | null>
   return result.rows[0] ?? null;
 }
 
-export async function createUserFromAuth0(input: Auth0Input): Promise<UserRecord> {
+export async function createUserFromAuth0(
+  input: Auth0Input,
+): Promise<UserRecord> {
   if (!input.sub?.trim()) {
     throw new Error("Auth0 subject is required");
   }
