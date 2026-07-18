@@ -7,7 +7,7 @@ export type UserRecord = {
   created_at: string;
 };
 
-type Auth0Input = {
+export type Auth0Input = {
   sub: string;
   name?: string | null;
   username?: string | null;
