@@ -27,9 +27,9 @@ if (
 
 // Branch naming convention pattern:
 // {branchType}/{projectName}/{categoryCode}/{issueNumber}/{description}
-// Example: feature/ValidateSolution/04S1/17/document-user-id-strategy
+// Example: feat/ValidateSolution/04S1/17/document-user-id-strategy
 const branchPattern =
-  /^(feature|fix|docs|style|refactor|perf|test|chore)\/([a-zA-Z0-9-]+)\/([a-zA-Z0-9]+)\/(\d+)\/[a-z0-9-]+$/;
+  /^(feat|fix|docs|style|refactor|perf|test|chore)\/([a-zA-Z0-9-]+)\/([a-zA-Z0-9]+)\/(\d+)\/[a-z0-9-]+$/;
 
 if (!branchPattern.test(branchName)) {
   console.error("\n❌ Branch name does not follow the project convention!");
