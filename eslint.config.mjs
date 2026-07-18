@@ -6,14 +6,14 @@ import tsPlugin from "@typescript-eslint/eslint-plugin";
 
 const eslintConfig = defineConfig([
   globalIgnores([
-    "node_modules/**",
-    ".next/**",
-    "Pods/**",
-    "android/**",
-    "ios/**",
-    "dist/**",
-    "build/**",
-    ".git/**"
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/Pods/**",
+    "**/android/**",
+    "**/ios/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.git/**"
   ]),
   ...nextVitals,
   ...nextTs,
