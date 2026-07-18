@@ -20,3 +20,8 @@ CREATE INDEX IF NOT EXISTS idx_note_user_id ON note(user_id);
 -- Optional: Create a test user for development
 INSERT INTO "user" (name) VALUES ('Test User')
 ON CONFLICT DO NOTHING;
+
+ALTER TABLE "user" ADD COLUMN IF NOT EXISTS auth0_sub TEXT;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_user_auth0_sub
+ON "user"(auth0_sub)
+WHERE auth0_sub IS NOT NULL;

@@ -1,5 +1,3 @@
-import { MigrationBuilder } from "node-pg-migrate";
-
 export const up = (pgm) => {
   pgm.sql(`ALTER TABLE "user" ADD COLUMN IF NOT EXISTS auth0_sub TEXT;`);
   pgm.sql(`

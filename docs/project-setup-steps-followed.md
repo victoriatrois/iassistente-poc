@@ -24,7 +24,7 @@ These were the original creation steps for the backend workspace.
 3. npm install pg dotenv
 4. npm install --save-dev @types/node
 5. cp .env.local .env.local 2>/dev/null || echo "NEXT_PUBLIC_API_URL=http://localhost:3000
-   DATABASE_URL=postgresql://user:password@localhost:5432/notes_db" > .env.local
+  DATABASE_URL=<set a local PostgreSQL connection string>" > .env.local
 
 ## Database setup
 
